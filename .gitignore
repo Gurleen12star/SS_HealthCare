@@ -1,0 +1,86 @@
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+venv/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# Node / Next.js
+# =========================
+
+node_modules/
+.next/
+out/
+dist/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# OS / Editor
+# =========================
+
+.DS_Store
+
+.vscode/
+.idea/
+
+# =========================
+# ML Models
+# =========================
+
+*.pt
+*.pth
+*.onnx
+*.h5
+*.tflite
+
+# =========================
+# Datasets
+# =========================
+
+datasets/raw/
+datasets/processed/
+
+# =========================
+# Uploads
+# =========================
+
+uploads/
+
+# Medical datasets
+datasets/raw/
+datasets/interim/
+datasets/processed/
+
+# ML outputs
+ml/**/checkpoints/
+ml/**/runs/
+ml/**/weights/
+
+*.pt
+*.pth
+*.onnx
+ml/data/
+.venv/
+anemia/.venv/

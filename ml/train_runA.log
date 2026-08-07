@@ -1,0 +1,37 @@
+Using device: mps
+Training full model (Run A config)...
+Epoch 1 | Val AUROC: 0.6014
+Epoch 2 | Val AUROC: 0.5984
+Epoch 3 | Val AUROC: 0.6224
+Epoch 4 | Val AUROC: 0.6116
+Epoch 5 | Val AUROC: 0.6519
+Epoch 6 | Val AUROC: 0.7035
+Epoch 7 | Val AUROC: 0.7113
+Epoch 8 | Val AUROC: 0.7539
+Epoch 9 | Val AUROC: 0.7929
+Epoch 10 | Val AUROC: 0.7425
+Epoch 11 | Val AUROC: 0.7953
+Epoch 12 | Val AUROC: 0.8085
+Epoch 13 | Val AUROC: 0.8019
+Epoch 14 | Val AUROC: 0.7995
+Epoch 15 | Val AUROC: 0.7953
+Epoch 16 | Val AUROC: 0.8517
+Epoch 17 | Val AUROC: 0.8109
+Epoch 18 | Val AUROC: 0.8301
+Epoch 19 | Val AUROC: 0.8337
+Epoch 20 | Val AUROC: 0.8445
+Epoch 21 | Val AUROC: 0.8379
+Epoch 22 | Val AUROC: 0.8481
+Epoch 23 | Val AUROC: 0.8733
+Epoch 24 | Val AUROC: 0.8661
+Epoch 25 | Val AUROC: 0.8601
+Epoch 26 | Val AUROC: 0.8403
+Epoch 27 | Val AUROC: 0.8487
+Epoch 28 | Val AUROC: 0.8541
+Epoch 29 | Val AUROC: 0.8445
+Epoch 30 | Val AUROC: 0.8517
+Epoch 31 | Val AUROC: 0.8517
+Epoch 32 | Val AUROC: 0.8625
+Epoch 33 | Val AUROC: 0.8589
+Early stopping triggered.
+Finished. Best AUROC: 0.8733
