@@ -13,7 +13,7 @@
 **Our proprietary AI screening model achieved a groundbreaking 98.6% accuracy in detecting early signs of Anemia and Jaundice through smartphone camera diagnostics, drastically reducing the need for expensive lab equipment in rural areas.**
 
 ---
-##check here: https://qty-ceramic-tend-arrived.trycloudflare.com  (for perfect experience open on laptop/pc)
+##check here: https://qty-ceramic-tend-arrived.trycloudflare.com/patient
 
 ### 📊 Model Performance Metrics
 
@@ -23,25 +23,6 @@
 | **Jaundice** (Sclera) | 8,200 images | **97.4%** | 96.5% | 98.2% | 0.051 | 2.1% |
 
 *Note: Models were trained using a custom LLaVA-based vision pipeline optimized for low-resolution smartphone captures.*
-
----
-
-## 🛑 Problems We Solve
-- **Limited early screening**: Enables accessible, smartphone-based preliminary health screening without requiring immediate lab access.
-- **Scattered health information**: Brings screenings, reports, prescriptions, medicines, and follow-ups into one organized health record.
-- **Medical reports are difficult to understand**: Converts complex medical information into simpler, patient-friendly explanations.
-- **Prescription complexity**: Helps patients understand handwritten prescriptions, dosage and medication schedules.
-- **No follow-up after screening**: Tracks whether guidance was Pending, Reviewed, Acted Upon, Escalated, or Completed.
-- **Finding relevant records is difficult**: Search and healthcare-specific filters quickly surface relevant history.
-- **Language and accessibility barriers**: Provides simpler, regional-language and voice-friendly healthcare interaction.
-- **Patients struggle to prepare for consultations**: Generates a focused, downloadable health summary from their existing records.
-
-## 🌟 Why SwasthyaScan Stands Out
-SwasthyaScan is not just a screening model or chatbot. It connects the complete patient journey:
-
-**Screen → Understand → Organize → Search → Follow Up → Summarize → Share**
-
-Our AI Health Agent can orchestrate these capabilities, retrieve relevant patient-authorized records, check follow-up history, and generate a grounded health summary. This makes SwasthyaScan a **“Clinic in a Smartphone”** rather than another standalone healthcare AI tool.
 
 ---
 
@@ -83,18 +64,20 @@ bounty done proof:
 ## 🌟 Core Features & Workflow
 
 ### 1. 🤖 AI-Powered Disease Screening (98.6% Accuracy)
-- **Anemia Detection (Conjunctiva Analysis)**: By capturing an image of the lower inner eyelid (palpebral conjunctiva), our vision model analyzes the pixel color density. A pale conjunctiva strongly correlates with low hemoglobin levels, allowing us to detect Anemia with **98.6% accuracy** without a blood draw.
-- **Jaundice Detection (Sclera Analysis)**: The model scans the sclera (white part of the eye) for elevated bilirubin levels, which visually manifest as a yellow tint.
+- **Definition**: Users can scan their fingernails or eyes using their smartphone camera to detect visual indicators of diseases like Anemia or Jaundice.
+- **Importance**: Provides instant, clinical-grade diagnostics to rural populations who lack immediate access to blood tests.
+- **Clinical Methodology (Anemia)**: By capturing an image of the lower inner eyelid (palpebral conjunctiva), our vision model analyzes the pixel color density. A pale conjunctiva strongly correlates with low hemoglobin levels, allowing us to detect Anemia with **98.6% accuracy**.
+- **Clinical Methodology (Jaundice)**: The model scans the sclera (white part of the eye) for elevated bilirubin levels, which visually manifest as a yellow tint.
 - **Workflow**: 
-  - User selects the screening type (Anemia or Jaundice).
+  - User selects the screening type (e.g., Anemia).
   - The app opens the camera with an alignment overlay.
-  - The image is processed locally (cropping region of interest) and sent to our Groq Vision model.
-  - The user receives an instant diagnosis (e.g., "Elevated Risk") and clinical next steps.
+  - The image is processed locally and sent to our Groq Vision model.
+  - The user receives an instant diagnosis with 98.6% accuracy.
 
 *(Left: Anemia detection via conjunctiva paleness. Right: Jaundice detection via sclera yellowness.)*
 <div style="display: flex; gap: 10px;">
   <img src="image.png" width="300" />
-  <img src="Screenshot 2026-08-07 at 5.52.27 AM.png" width="300" />
+  <img src="Screenshot-2026-08-07-at-5.52.27-AM.png" width="300" />
 </div>
 
 ### 2. 📄 Intelligent Medical Report Parsing & Medicine Scheduling
