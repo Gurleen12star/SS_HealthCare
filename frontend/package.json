@@ -9,10 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^4.0.26",
+    "@ai-sdk/react": "^4.0.61",
     "@supabase/ssr": "^0.12.4",
     "@supabase/supabase-js": "^2.112.0",
     "@yudiel/react-qr-scanner": "^2.6.0",
+    "ai": "^7.0.58",
+    "dotenv": "^17.4.2",
     "groq-sdk": "^1.5.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "lucide-react": "^1.28.0",
     "next": "16.3.0",
     "qrcode.react": "^4.2.0",

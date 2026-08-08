@@ -78,23 +78,16 @@ export default function LoginPage() {
         {/* Hackathon Demo Buttons */}
         <div className="bg-[#176b4d]/10 border border-[#176b4d]/30 p-4 rounded-2xl mb-8">
           <h2 className="text-sm font-bold text-[#176b4d] uppercase tracking-wider mb-3 text-center">Hackathon Demo Access</h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             <button
               type="button"
-              onClick={() => { setEmail('patient@example.com'); setPassword('password123'); }}
-              className="bg-white border border-[#176b4d] text-[#176b4d] py-2 rounded-xl font-bold text-sm hover:bg-[#eef8f1]"
+              onClick={() => { setEmail('test@swasthyascan.com'); setPassword('password123'); }}
+              className="bg-white border border-[#176b4d] text-[#176b4d] py-3 rounded-xl font-bold text-sm hover:bg-[#eef8f1] shadow-sm w-full"
             >
-              Patient Mode
-            </button>
-            <button
-              type="button"
-              onClick={() => { setEmail('asha@example.com'); setPassword('password123'); }}
-              className="bg-[#176b4d] text-white py-2 rounded-xl font-bold text-sm hover:bg-emerald-700"
-            >
-              ASHA Mode
+              Patient Mode (Auto-fill)
             </button>
           </div>
-          <p className="text-xs text-center text-[#526158] mt-2">Tap a button above to auto-fill credentials.</p>
+          <p className="text-xs text-center text-[#526158] mt-2">Tap the button above to auto-fill test credentials.</p>
         </div>
 
         <form

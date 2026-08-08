@@ -153,6 +153,11 @@ export default function PatientHome({ name }: Props) {
         <h2 className="mt-8 text-xl font-bold">{t.home.question}</h2>
 
         <div className="mt-5 grid grid-cols-2 gap-4">
+          {/* AI Agent Full Width */}
+          <div className="col-span-2">
+            <FeatureCard title="Swasthya Health Agent" description="Find and understand your health information." href="/agent" icon={FileText} />
+          </div>
+          
           <FeatureCard title={t.home.screening} description={t.home.screeningDescription} href="/screening" icon={HeartPulse} />
           <FeatureCard title={t.home.report} description={t.home.reportDescription} href="/reports" icon={FileText} />
           <FeatureCard title={t.home.medicine} description={t.home.medicineDescription} href="/prescriptions" icon={Pill} />

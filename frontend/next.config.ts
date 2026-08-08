@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['gurleens-macbook-air.local', '172.25.186.57', 'localhost', '127.0.0.1', '192.168.1.2', 'sandwich-gravity-lonely-amy.trycloudflare.com'],
+  allowedDevOrigins: ['gurleens-macbook-air.local', '172.25.186.57', 'localhost', '127.0.0.1', '192.168.1.2', 'qty-ceramic-tend-arrived.trycloudflare.com'],
   async rewrites() {
     return [
       {

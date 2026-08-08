@@ -14,6 +14,37 @@
 
 ---
 
+## 🎯 Hackathon Bounty Implementations
+
+We have successfully engineered the **perfect solution** for the core hackathon bounties, seamlessly integrating them into a holistic, patient-first architecture. Rather than treating these requirements as isolated features, we unified them into a singular, AI-driven healthcare workflow.
+
+### 1. Patient Follow-up Status Tracker (Bounty 1)
+A screening result should never be a dead end. We extended the `public.screenings` database schema and created a robust Follow-up Tracking system that allows clinicians and patients to continuously update the state of their health journey. We implemented strict, distinct states (**🟡 Pending, 🔵 Reviewed, 🟢 Acted Upon, 🔴 Escalated, ✅ Completed**) that visually persist on every medical record card in the dashboard. This ensures that critical diagnostic flags, such as elevated Anemia risks, do not fall through the cracks of a rural healthcare system. Furthermore, these statuses are securely tied to the exact screening UUID using Supabase Row-Level Security, preventing unauthorized tampering.
+
+### 2. Intelligent Health Record Search & Filters (Bounty 2)
+As a patient's medical history grows, discovering past records becomes increasingly difficult. To solve this, we implemented a sophisticated, real-time filtering engine within the Reports Dashboard. Users can seamlessly cross-filter their entire medical timeline using custom healthcare-specific metrics: **[ Screening Type ]**, **[ Risk Level ]**, and **[ Date ]**. Whether a clinician is looking for "Elevated Risk" anaemia screenings from the "Last 7 Days" or searching for a specific CBC keyword, the React state engine instantly refines the UI. We meticulously handled edge cases, displaying clear empty states when filters yield no results, ensuring the application feels robust and intuitive.
+
+### 3. Patient-Friendly Health Summary PDF (Bounty 3)
+Rural patients often require physical copies of their records to share with local doctors who may not have digital access. We engineered a seamless, client-side PDF generation pipeline using `jsPDF` and `jspdf-autotable`. With a single click, the system compiles a highly structured, printable **SwasthyaScan Health Summary**. This document perfectly extracts and organizes complex JSON telemetry into readable rows: Symptoms, Screening Type, Risk Level, AI Guidance, Prescribed Medicines, Follow-up Status, and Clinical Next Steps. It concludes with a strict medical disclaimer, ensuring compliance with telehealth standards.
+
+### 🔥 4. The Swasthya Health Agent (Grand Orchestration)
+To bring these three bounties together, we architected an autonomous, tool-calling LLM Agent powered by the Vercel AI SDK (v4). We equipped the agent with secure, RLS-scoped tools (`search_health_records`, `get_screening_record`, `get_follow_up`, `generate_health_summary_pdf`). When a user types a complex query like *"I've been feeling dizzy and weak. Find relevant records and prepare something for my doctor"*, the agent natively orchestrates the entire workflow. It searches the database, reads the specific screening values, checks the follow-up status, synthesizes a clinical summary, and finally triggers a client-side PDF download—all in a single, autonomous chain of thought.
+
+```mermaid
+graph TD
+    A[Patient: 'I feel dizzy, prepare a summary for my doctor'] --> B[AI Agent Planner]
+    B --> C{Tool: search_health_records}
+    C -->|Finds Anaemia Record| D{Tool: get_screening_record}
+    D -->|Reads Hb Levels & Risk| E{Tool: get_follow_up}
+    E -->|Reads 🟡 Pending Status| F{Tool: create_patient_summary}
+    F -->|Synthesizes Data| G{Tool: generate_health_summary_pdf}
+    G --> H[Swasthya Health Summary PDF Downloaded]
+    style B fill:#176b4d,stroke:#fff,stroke-width:2px,color:#fff
+    style H fill:#176b4d,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+---
+
 ## 🌟 Core Features & Workflow
 
 ### 1. 🤖 AI-Powered Disease Screening

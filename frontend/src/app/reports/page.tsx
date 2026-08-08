@@ -20,6 +20,11 @@ export default function ReportGuru() {
   
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState("");
+  
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [filterRisk, setFilterRisk] = useState("");
+  const [filterDate, setFilterDate] = useState("");
 
   const supabase = createClient();
 
@@ -131,6 +136,8 @@ export default function ReportGuru() {
     if (editingId) return; // don't navigate if currently editing
     if (item.type === 'report') {
       router.push(`/records/${item.id}`);
+    } else if (item.type === 'screening') {
+      router.push(`/screening/record/${item.id}`);
     }
   };
 
@@ -198,18 +205,94 @@ export default function ReportGuru() {
       </div>
 
       <div className="mt-8 rounded-2xl bg-white p-5 shadow-sm border border-[#dfe7e2]">
-        <h2 className="text-xl font-bold text-[#17211b] mb-4 border-b border-[#dfe7e2] pb-4">Recent Records</h2>
+        <div className="mb-4">
+          <input 
+            type="text" 
+            placeholder="Search health records..." 
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            className="w-full bg-[#f8faf9] border border-[#dfe7e2] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#176b4d] mb-3"
+          />
+          <div className="flex gap-2">
+            <select 
+              value={filterType} 
+              onChange={e => setFilterType(e.target.value)}
+              className="flex-1 bg-[#f8faf9] border border-[#dfe7e2] rounded-xl px-2 py-2 text-sm focus:outline-none"
+            >
+              <option value="">All Types</option>
+              <option value="report">Reports</option>
+              <option value="screening">Screenings</option>
+            </select>
+            <select 
+              value={filterRisk} 
+              onChange={e => setFilterRisk(e.target.value)}
+              className="flex-1 bg-[#f8faf9] border border-[#dfe7e2] rounded-xl px-2 py-2 text-sm focus:outline-none"
+            >
+              <option value="">All Risks</option>
+              <option value="low">Low Risk</option>
+              <option value="elevated">Elevated Risk</option>
+              <option value="urgent">Urgent</option>
+            </select>
+            <select 
+              value={filterDate} 
+              onChange={e => setFilterDate(e.target.value)}
+              className="flex-1 bg-[#f8faf9] border border-[#dfe7e2] rounded-xl px-2 py-2 text-sm focus:outline-none"
+            >
+              <option value="">All Dates</option>
+              <option value="7">Last 7 Days</option>
+              <option value="30">Last 30 Days</option>
+            </select>
+            <button 
+              onClick={() => { setSearchQuery(""); setFilterType(""); setFilterRisk(""); setFilterDate(""); }}
+              className="px-3 bg-gray-100 text-gray-600 rounded-xl text-sm"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-bold text-[#17211b] mb-4 border-b border-[#dfe7e2] pb-4">
+          {searchQuery || filterType || filterRisk || filterDate ? "Search Results" : "Recent Records"}
+        </h2>
         
         {loading ? (
           <div className="text-center py-8 text-[#526158]">Loading records...</div>
-        ) : timeline.length === 0 ? (
+        ) : timeline.filter(item => {
+            const matchesSearch = !searchQuery || JSON.stringify(item).toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesType = !filterType || item.type === filterType;
+            const matchesRisk = !filterRisk || (item.risk_level === filterRisk);
+            
+            let matchesDate = true;
+            if (filterDate) {
+              const itemDate = new Date(item.created_at);
+              const cutoff = new Date();
+              cutoff.setDate(cutoff.getDate() - parseInt(filterDate));
+              matchesDate = itemDate >= cutoff;
+            }
+            
+            return matchesSearch && matchesType && matchesRisk && matchesDate;
+          }).length === 0 ? (
           <div className="text-center py-8 text-[#526158]">
             <span className="text-4xl mb-2 block">📄</span>
-            No records yet. Tap 'Add Report' to start.
+            {searchQuery || filterType || filterRisk || filterDate ? "No health records found matching your search." : "No records yet. Tap 'Add Report' to start."}
           </div>
         ) : (
           <div className="space-y-4">
-            {timeline.map((item) => {
+            {timeline.filter(item => {
+              const matchesSearch = !searchQuery || JSON.stringify(item).toLowerCase().includes(searchQuery.toLowerCase());
+              const matchesType = !filterType || item.type === filterType;
+              const matchesRisk = !filterRisk || (item.risk_level === filterRisk);
+              
+              let matchesDate = true;
+              if (filterDate) {
+                const itemDate = new Date(item.created_at);
+                const cutoff = new Date();
+                cutoff.setDate(cutoff.getDate() - parseInt(filterDate));
+                matchesDate = itemDate >= cutoff;
+              }
+              
+              return matchesSearch && matchesType && matchesRisk && matchesDate;
+            }).map((item) => {
               const displayTitle = item.type === 'report' 
                 ? (item.extracted_data?.custom_title || item.extracted_data?.subtype || item.report_type.replace('_', ' ')) 
                 : `${item.screening_type} Screening`;
@@ -219,7 +302,10 @@ export default function ReportGuru() {
                   <div className="absolute w-3 h-3 bg-[#176b4d] rounded-full -left-[7px] top-1.5 border border-white"></div>
                   
                   {item.type === 'screening' ? (
-                    <div className="bg-[#f8faf9] p-4 rounded-xl border border-[#dfe7e2]">
+                    <div 
+                      onClick={() => handleNavigate(item)}
+                      className="bg-[#f8faf9] p-4 rounded-xl border border-[#dfe7e2] cursor-pointer hover:bg-white transition-colors"
+                    >
                       <div className="flex items-start justify-between mb-1">
                         <div className="flex items-center gap-2">
                           <span className="text-xl">
@@ -227,16 +313,26 @@ export default function ReportGuru() {
                           </span>
                           <h3 className="font-bold text-[#17211b] capitalize">{displayTitle}</h3>
                         </div>
-                        <button onClick={(e) => handleDelete(e, item)} className="text-[#a11d1d] hover:text-red-700 p-1 shrink-0">
-                          <Trash2 size={16} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          {item.follow_up_status && (
+                            <span className="text-[10px] uppercase font-bold bg-[#eef8f1] text-[#176b4d] px-2 py-1 rounded-full">
+                              {item.follow_up_status}
+                            </span>
+                          )}
+                          <button onClick={(e) => handleDelete(e, item)} className="text-[#a11d1d] hover:text-red-700 p-1 shrink-0">
+                            <Trash2 size={16} />
+                          </button>
+                        </div>
                       </div>
                       <p className="text-xs text-[#526158] mb-1">
                         {new Date(item.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })} at {new Date(item.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                       </p>
-                      <p className={`text-sm font-semibold ${item.risk_level === 'elevated' || item.result_label?.includes('Elevated') ? 'text-[#a11d1d]' : 'text-[#176b4d]'}`}>
-                        {item.result_label}
-                      </p>
+                      <div className="flex justify-between items-center mt-2">
+                        <p className={`text-sm font-semibold ${item.risk_level === 'elevated' || item.result_label?.includes('Elevated') ? 'text-[#a11d1d]' : 'text-[#176b4d]'}`}>
+                          {item.result_label}
+                        </p>
+                        <span className="text-[#176b4d] font-bold">→</span>
+                      </div>
                     </div>
                   ) : (
                     <div 
