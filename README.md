@@ -26,6 +26,25 @@
 
 ---
 
+## 🛑 Problems We Solve
+- **Limited early screening**: Enables accessible, smartphone-based preliminary health screening without requiring immediate lab access.
+- **Scattered health information**: Brings screenings, reports, prescriptions, medicines, and follow-ups into one organized health record.
+- **Medical reports are difficult to understand**: Converts complex medical information into simpler, patient-friendly explanations.
+- **Prescription complexity**: Helps patients understand handwritten prescriptions, dosage and medication schedules.
+- **No follow-up after screening**: Tracks whether guidance was Pending, Reviewed, Acted Upon, Escalated, or Completed.
+- **Finding relevant records is difficult**: Search and healthcare-specific filters quickly surface relevant history.
+- **Language and accessibility barriers**: Provides simpler, regional-language and voice-friendly healthcare interaction.
+- **Patients struggle to prepare for consultations**: Generates a focused, downloadable health summary from their existing records.
+
+## 🌟 Why SwasthyaScan Stands Out
+SwasthyaScan is not just a screening model or chatbot. It connects the complete patient journey:
+
+**Screen → Understand → Organize → Search → Follow Up → Summarize → Share**
+
+Our AI Health Agent can orchestrate these capabilities, retrieve relevant patient-authorized records, check follow-up history, and generate a grounded health summary. This makes SwasthyaScan a **“Clinic in a Smartphone”** rather than another standalone healthcare AI tool.
+
+---
+
 ## 🎯 Hackathon Bounty Implementations
 
 We have successfully engineered the **perfect solution** for the core hackathon bounties, seamlessly integrating them into a holistic, patient-first architecture. Rather than treating these requirements as isolated features, we unified them into a singular, AI-driven healthcare workflow.
