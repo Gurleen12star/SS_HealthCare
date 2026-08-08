@@ -73,6 +73,9 @@ graph TD
     style B fill:#176b4d,stroke:#fff,stroke-width:2px,color:#fff
     style H fill:#176b4d,stroke:#fff,stroke-width:2px,color:#fff
 ```
+bounty done proof:
+<img width="898" height="1370" alt="image" src="https://github.com/user-attachments/assets/442fd92c-251f-4a45-9fbd-d175e9796f38" />
+
 
 ---
 
@@ -120,6 +123,12 @@ graph TD
 - **Importance**: Ensures patients can find physical care facilities in their immediate vicinity during critical moments.
 
 ---
+## the results our model shows:
+<img width="260" height="235" alt="Screenshot 2026-08-07 at 5 52 27 AM" src="https://github.com/user-attachments/assets/03037dde-1ecd-4194-84c3-5a51119c9ba0" />
+<img width="435" height="211" alt="Screenshot 2026-08-07 at 5 53 21 AM" src="https://github.com/user-attachments/assets/7bd5910f-ae78-4079-ab33-892ddf35cfa5" />
+
+<img width="435" height="211" alt="Screenshot 2026-08-07 at 5 53 21 AM" src="https://github.com/user-attachments/assets/b899cdb0-d603-44ca-b4ec-f55f32368c34" />
+
 
 ## 🏗️ System Architecture & Tech Stack
 
@@ -143,6 +152,9 @@ SwasthyaScan is built for scale, speed, and accessibility.
 - **Context API**: The entire application is wrapped in a dynamic `LanguageContext`, allowing instant translation to 12 native Indian languages (Hindi, Bengali, Telugu, etc.) with integrated Text-to-Speech support.
 
 ---
+<img width="435" height="211" alt="Screenshot 2026-08-07 at 5 53 21 AM" src="https://github.com/user-attachments/assets/0b7f1464-b535-4d06-a236-a2b90fc06871" />
+<img width="435" height="211" alt="Screenshot 2026-08-07 at 5 53 21 AM" src="https://github.com/user-attachments/assets/9d4c3d3e-ce83-4a33-ad06-c29d1ec436f6" />
+
 
 ## 🚀 How to Run Locally
 
