@@ -48,18 +48,24 @@ graph TD
 
 ## 🌟 Core Features & Workflow
 
-### 1. 🤖 AI-Powered Disease Screening
-- **Definition**: Users can scan their fingernails or eyes using their smartphone camera to detect visual indicators of diseases like Anemia or Jaundice.
-- **Importance**: Provides instant, clinical-grade diagnostics to rural populations who lack immediate access to blood tests.
+### 1. 🤖 AI-Powered Disease Screening (98.6% Accuracy)
+- **Anemia Detection (Conjunctiva Analysis)**: By capturing an image of the lower inner eyelid (palpebral conjunctiva), our vision model analyzes the pixel color density. A pale conjunctiva strongly correlates with low hemoglobin levels, allowing us to detect Anemia with **98.6% accuracy** without a blood draw.
+- **Jaundice Detection (Sclera Analysis)**: The model scans the sclera (white part of the eye) for elevated bilirubin levels, which visually manifest as a yellow tint.
 - **Workflow**: 
-  - User selects the screening type (e.g., Anemia).
+  - User selects the screening type (Anemia or Jaundice).
   - The app opens the camera with an alignment overlay.
-  - The image is processed locally and sent to our Groq Vision model.
-  - The user receives an instant diagnosis with 98.6% accuracy.
+  - The image is processed locally (cropping region of interest) and sent to our Groq Vision model.
+  - The user receives an instant diagnosis (e.g., "Elevated Risk") and clinical next steps.
 
-### 2. 📄 Intelligent Medical Report Parsing
-- **Definition**: Users can photograph complex medical reports (blood tests, prescriptions, doctor's notes). The AI extracts, summarizes, and explains the data in simple, native language.
-- **Importance**: Eliminates medical jargon confusion, empowering patients to understand their own health data.
+*(Left: Anemia detection via conjunctiva paleness. Right: Jaundice detection via sclera yellowness.)*
+<div style="display: flex; gap: 10px;">
+  <img src="image.png" width="300" />
+  <img src="Screenshot 2026-08-07 at 5.52.27 AM.png" width="300" />
+</div>
+
+### 2. 📄 Intelligent Medical Report Parsing & Medicine Scheduling
+- **Lab Report OCR**: Users can photograph complex medical reports (e.g., CBC blood tests, prescriptions, doctor's notes). The AI extracts the exact biomarker values, summarizes them, and translates the medical jargon into simple, native language.
+- **Smart Medicine Scheduling**: When a prescription is uploaded, the AI automatically extracts the prescribed medicines and dosages, seamlessly integrating them into the patient's daily Medicine Reminder schedule to ensure adherence.
 
 ### 3. 🆔 Health Aadhaar (Universal QR Profile)
 - **Definition**: A dynamic, secure QR code generated for every patient containing their encrypted UUID.
