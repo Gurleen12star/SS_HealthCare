@@ -13,7 +13,7 @@
 **Our proprietary AI screening model achieved a groundbreaking 98.6% accuracy in detecting early signs of Anemia and Jaundice through smartphone camera diagnostics, drastically reducing the need for expensive lab equipment in rural areas.**
 
 ---
-##check here: https://qty-ceramic-tend-arrived.trycloudflare.com
+##check here: https://qty-ceramic-tend-arrived.trycloudflare.com  (for perfect experience open on laptop/pc)
 
 ### 📊 Model Performance Metrics
 
